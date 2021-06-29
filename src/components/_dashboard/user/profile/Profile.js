@@ -5,8 +5,11 @@ import { Grid, Stack } from '@material-ui/core';
 import ProfileAbout from './ProfileAbout';
 import ProfilePostCard from './ProfilePostCard';
 import ProfilePostInput from './ProfilePostInput';
+import ProfileTest from './ProfileTest';
+
 import ProfileFollowInfo from './ProfileFollowInfo';
 import ProfileSocialInfo from './ProfileSocialInfo';
+import { AppTotalActiveUsers } from '../../general-app';
 
 // ----------------------------------------------------------------------
 
@@ -20,9 +23,11 @@ export default function Profile({ myProfile, posts }) {
     <Grid container spacing={3}>
       <Grid item xs={12} md={4}>
         <Stack spacing={3}>
-          <ProfileFollowInfo profile={myProfile} />
-          <ProfileAbout profile={myProfile} />
-          <ProfileSocialInfo profile={myProfile} />
+          {/* <ProfileFollowInfo profile={myProfile} /> */}
+          {/* <ProfileAbout profile={myProfile} /> */}
+          <ProfileTest profile={myProfile} />
+          <AppTotalActiveUsers />
+          {/* <ProfileSocialInfo profile={myProfile} /> */}
         </Stack>
       </Grid>
 
