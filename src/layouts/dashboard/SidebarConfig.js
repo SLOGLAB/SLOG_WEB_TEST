@@ -102,7 +102,7 @@ const sidebarConfig = [
     items: [
       {
         title: '나의 그룹',
-        path: PATH_DASHBOARD.general.app,
+        path: PATH_DASHBOARD.general.mygroup,
         icon: ICONS.dashboard
       },
       { title: '그룹 검색', path: PATH_DASHBOARD.general.group, icon: ICONS.ecommerce }

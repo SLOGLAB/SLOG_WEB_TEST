@@ -39,7 +39,8 @@ export const PATH_DASHBOARD = {
     app: path(ROOTS_DASHBOARD, '/app'),
     ecommerce: path(ROOTS_DASHBOARD, '/ecommerce'),
     analytics: path(ROOTS_DASHBOARD, '/analytics'),
-    group: path(ROOTS_DASHBOARD, '/groupsearch')
+    group: path(ROOTS_DASHBOARD, '/groupsearch'),
+    mygroup: path(ROOTS_DASHBOARD, '/mygroup')
   },
   mail: {
     root: path(ROOTS_DASHBOARD, '/mail'),

@@ -63,13 +63,11 @@ BlogPostCard.propTypes = {
   index: PropTypes.number
 };
 
-export default function BlogPostCard({ post, index }) {
+export default function BlogPostCardA({ post, index }) {
   const { cover, title, view, comment, share, author, createdAt } = post;
   const linkTo = `${PATH_DASHBOARD.blog.root}/post/${paramCase(title)}`;
-  const latestPostLarge = index === null;
-  // null -> 0
-  const latestPost = index === 1 && index === 2;
-  // && -> ||
+  const latestPostLarge = index === 0;
+  const latestPost = index === 1 || index === 2;
 
   const POST_INFO = [
     { number: comment, icon: messageCircleFill },
@@ -78,7 +76,7 @@ export default function BlogPostCard({ post, index }) {
   ];
 
   return (
-    <Grid item xs={12} sm={latestPostLarge ? 12 : 6} md={4}>
+    <Grid item xs={12} sm={latestPostLarge ? 12 : 6} md={latestPostLarge ? 6 : 3}>
       <Card sx={{ position: 'relative' }}>
         <CardMediaStyle
           sx={{
@@ -158,7 +156,7 @@ export default function BlogPostCard({ post, index }) {
           >
             {title}
           </TitleStyle>
-          {/* 
+
           <InfoStyle>
             {POST_INFO.map((info, index) => (
               <Box
@@ -176,7 +174,7 @@ export default function BlogPostCard({ post, index }) {
                 <Typography variant="caption">{fShortenNumber(info.number)}</Typography>
               </Box>
             ))}
-          </InfoStyle> */}
+          </InfoStyle>
         </CardContent>
       </Card>
     </Grid>

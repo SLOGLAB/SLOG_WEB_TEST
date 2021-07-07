@@ -147,7 +147,7 @@ export default function UserList() {
   return (
     <Page title="User: List | Minimal-UI">
       <Container>
-        <HeaderBreadcrumbs
+        {/* <HeaderBreadcrumbs
           heading="User List"
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
@@ -164,7 +164,7 @@ export default function UserList() {
               New User
             </Button>
           }
-        />
+        /> */}
 
         <Card>
           <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />

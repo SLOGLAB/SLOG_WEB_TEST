@@ -53,6 +53,8 @@ export default function UserProfile() {
   const [currentTab, setCurrentTab] = useState('profile');
   const [findFriends, setFindFriends] = useState('');
 
+  const Kor = 'asd';
+
   useEffect(() => {
     dispatch(getProfile());
     dispatch(getPosts());
@@ -84,12 +86,12 @@ export default function UserProfile() {
       component: <Profile myProfile={myProfile} posts={posts} />
     },
     {
-      value: 'statistics',
+      value: '왜대체',
       // icon: <Icon icon={heartFill} width={20} height={20} />,
       component: <ProfileFollowers followers={followers} onToggleFollow={handleToggleFollow} />
     },
     {
-      value: 'schedule',
+      value: '안됨',
       // icon: <Icon icon={peopleFill} width={20} height={20} />,
       component: <ProfileFriends friends={friends} findFriends={findFriends} onFindFriends={handleFindFriends} />
     }
@@ -98,6 +100,20 @@ export default function UserProfile() {
     //   icon: <Icon icon={roundPermMedia} width={20} height={20} />,
     //   component: <ProfileGallery gallery={gallery} />
     // }
+  ];
+
+  const PROFILE_TABSS = [
+    {
+      value: 'asdas'
+    },
+    {
+      value: '왜대체',
+      component: <ProfileFollowers followers={followers} onToggleFollow={handleToggleFollow} />
+    },
+    {
+      value: '안됨',
+      component: <ProfileFriends friends={friends} findFriends={findFriends} onFindFriends={handleFindFriends} />
+    }
   ];
 
   return (
@@ -128,8 +144,8 @@ export default function UserProfile() {
               allowScrollButtonsMobile
               onChange={handleChangeTab}
             >
-              {PROFILE_TABS.map((tab) => (
-                <Tab disableRipple key={tab.value} value={tab.value} icon={tab.icon} label={capitalCase(tab.value)} />
+              {PROFILE_TABSS.map((tab) => (
+                <Tab disableRipple key={tab.value} value={tab.value} icon={tab.icon} label={tab.value} />
               ))}
             </Tabs>
           </TabsWrapperStyle>

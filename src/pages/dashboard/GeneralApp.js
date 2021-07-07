@@ -57,6 +57,7 @@ export default function GeneralApp() {
               </Stack>
             </div>
           </div>
+
           {/* 
           <Grid item xs={12} md={8}>
             <AppWelcome displayName={user.displayName} />

@@ -81,6 +81,8 @@ export default function Router() {
         { path: 'app', element: <GeneralApp /> },
         { path: 'ecommerce', element: <GeneralEcommerce /> },
         { path: 'groupsearch', element: <GroupSearch /> },
+        { path: 'mygroup', element: <MyGroup /> },
+
         {
           path: 'analytics',
           element: <GeneralAnalytics />
@@ -244,6 +246,7 @@ const VerifyCode = Loadable(lazy(() => import('../pages/authentication/VerifyCod
 const GeneralApp = Loadable(lazy(() => import('../pages/dashboard/GeneralApp')));
 const GeneralEcommerce = Loadable(lazy(() => import('../pages/dashboard/GeneralEcommerce')));
 const GroupSearch = Loadable(lazy(() => import('../pages/dashboard/GroupSearch')));
+const MyGroup = Loadable(lazy(() => import('../pages/dashboard/MyGroup')));
 
 const GeneralAnalytics = Loadable(lazy(() => import('../pages/dashboard/GeneralAnalytics')));
 const EcommerceShop = Loadable(lazy(() => import('../pages/dashboard/EcommerceShop')));
