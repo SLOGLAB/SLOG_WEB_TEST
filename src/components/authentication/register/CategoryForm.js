@@ -14,6 +14,7 @@ import {
   Alert,
   Checkbox,
   TextField,
+  Autocomplete,
   IconButton,
   InputAdornment,
   FormControlLabel
@@ -30,6 +31,13 @@ import useIsMountedRef from '../../../hooks/useIsMountedRef';
 import { MIconButton } from '../../@material-extend';
 
 // ----------------------------------------------------------------------
+
+// 범주배열
+const options = ['중학생', '고등학생', '대학생'];
+const options2 = ['Option 1', 'Option 2'];
+const options3 = ['Option 3', 'Option 4'];
+
+//
 
 export default function LoginForm() {
   const { login } = useAuth();
@@ -80,56 +88,77 @@ export default function LoginForm() {
     setShowPassword((show) => !show);
   };
 
+  /// 범주관련 state
+
+  const [value, setValue] = useState(options[0]);
+  const [inputValue, setInputValue] = useState('');
+
+  const [value2, setValue2] = useState(options2[0]);
+  const [inputValue2, setInputValue2] = useState('');
+
+  const [value3, setValue3] = useState(options3[0]);
+  const [inputValue3, setInputValue3] = useState('');
+
+  ///
   return (
     <FormikProvider value={formik}>
-      <AuthFireBaseSocial />
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Stack spacing={3}>
           {errors.afterSubmit && <Alert severity="error">{errors.afterSubmit}</Alert>}
-
-          <TextField
-            fullWidth
-            autoComplete="username"
-            type="email"
-            label="Email address"
-            {...getFieldProps('email')}
-            error={Boolean(touched.email && errors.email)}
-            helperText={touched.email && errors.email}
-          />
-
-          <TextField
-            fullWidth
-            autoComplete="current-password"
-            type={showPassword ? 'text' : 'password'}
-            label="Password"
-            {...getFieldProps('password')}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={handleShowPassword} edge="end">
-                    <Icon icon={showPassword ? eyeFill : eyeOffFill} />
-                  </IconButton>
-                </InputAdornment>
-              )
+          <Autocomplete
+            value={value}
+            onChange={(event, newValue) => {
+              setValue(newValue);
             }}
-            error={Boolean(touched.password && errors.password)}
-            helperText={touched.password && errors.password}
+            inputValue={inputValue}
+            onInputChange={(event, newInputValue) => {
+              setInputValue(newInputValue);
+            }}
+            id="controllable-states-demo"
+            options={options}
+            renderInput={(params) => <TextField {...params} label="사용 범주 1" />}
+          />
+          <Autocomplete
+            value={value2}
+            onChange={(event, newValue) => {
+              setValue2(newValue);
+            }}
+            inputValue={inputValue2}
+            onInputChange={(event, newInputValue) => {
+              setInputValue2(newInputValue);
+            }}
+            id="controllable-states-demo"
+            options={options2}
+            renderInput={(params) => <TextField {...params} label="사용 범주 2" />}
+          />
+          <Autocomplete
+            value={value3}
+            onChange={(event, newValue) => {
+              setValue3(newValue);
+            }}
+            inputValue={inputValue3}
+            onInputChange={(event, newInputValue) => {
+              setInputValue3(newInputValue);
+            }}
+            id="controllable-states-demo"
+            options={options3}
+            renderInput={(params) => <TextField {...params} label="사용 범주 3" />}
           />
         </Stack>
 
         <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ my: 2 }}>
-          <FormControlLabel
+          {/* <FormControlLabel
             control={<Checkbox {...getFieldProps('remember')} checked={values.remember} />}
             label="Remember me"
           />
 
           <Link component={RouterLink} variant="subtitle2" to={PATH_AUTH.resetPassword}>
             Forgot password
-          </Link>
+          </Link> */}
         </Stack>
 
         <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting}>
-          Login
+          완료
         </LoadingButton>
       </Form>
     </FormikProvider>

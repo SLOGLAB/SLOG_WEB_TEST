@@ -11,8 +11,7 @@ import AuthLayout from '../../layouts/AuthLayout';
 // components
 import Page from '../../components/Page';
 import { MHidden } from '../../components/@material-extend';
-import { LoginForm } from '../../components/authentication/login';
-import RegisterCategory from './RegisterCategory';
+import CategoryForm from '../../components/authentication/register/CategoryForm';
 import AuthFirebaseSocials from '../../components/authentication/AuthFirebaseSocial';
 
 // ----------------------------------------------------------------------
@@ -44,7 +43,7 @@ const ContentStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function Login() {
+export default function RegisterCategory() {
   const { method, login } = useAuth();
 
   const handleLoginAuth0 = async () => {
@@ -78,9 +77,9 @@ export default function Login() {
           <Stack direction="row" alignItems="center" sx={{ mb: 5 }}>
             <Box sx={{ flexGrow: 1 }}>
               <Typography variant="h4" gutterBottom>
-                Sign in to Minimal
+                정확한 학습 분석이 필요하세요 ?{' '}
               </Typography>
-              <Typography sx={{ color: 'text.secondary' }}>Enter your details below.</Typography>
+              <Typography sx={{ color: 'text.secondary' }}>올바른 사용 범주를 선택해주세요 !</Typography>
             </Box>
 
             <Tooltip title={method}>
@@ -95,7 +94,7 @@ export default function Login() {
           </Alert> */}
 
           {method !== 'auth0' ? (
-            <LoginForm />
+            <CategoryForm />
           ) : (
             <Button fullWidth size="large" type="submit" variant="contained" onClick={handleLoginAuth0}>
               Login

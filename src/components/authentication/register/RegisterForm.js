@@ -12,6 +12,7 @@ import { LoadingButton } from '@material-ui/lab';
 // hooks
 import useAuth from '../../../hooks/useAuth';
 import useIsMountedRef from '../../../hooks/useIsMountedRef';
+import AuthFireBaseSocial from '../AuthFirebaseSocial';
 //
 import { MIconButton } from '../../@material-extend';
 
@@ -66,6 +67,7 @@ export default function RegisterForm() {
 
   return (
     <FormikProvider value={formik}>
+      <AuthFireBaseSocial />
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Stack spacing={3}>
           {errors.afterSubmit && <Alert severity="error">{errors.afterSubmit}</Alert>}
@@ -87,17 +89,44 @@ export default function RegisterForm() {
               helperText={touched.lastName && errors.lastName}
             />
           </Stack>
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+            <TextField
+              fullWidth
+              autoComplete="username"
+              type="email"
+              label="Email address"
+              {...getFieldProps('email')}
+              error={Boolean(touched.email && errors.email)}
+              helperText={touched.email && errors.email}
+            />{' '}
+            <LoadingButton size="large" type="submit" variant="contained" loading={isSubmitting}>
+              EMAIL 인증
+            </LoadingButton>
+          </Stack>
 
-          <TextField
-            fullWidth
-            autoComplete="username"
-            type="email"
-            label="Email address"
-            {...getFieldProps('email')}
-            error={Boolean(touched.email && errors.email)}
-            helperText={touched.email && errors.email}
-          />
-
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+            <TextField
+              fullWidth
+              autoComplete="current-password"
+              type={showPassword ? 'text' : 'password'}
+              label="PhoneNumber"
+              {...getFieldProps('password')}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton edge="end" onClick={() => setShowPassword((prev) => !prev)}>
+                      <Icon icon={showPassword ? eyeFill : eyeOffFill} />
+                    </IconButton>
+                  </InputAdornment>
+                )
+              }}
+              error={Boolean(touched.password && errors.password)}
+              helperText={touched.password && errors.password}
+            />
+            <LoadingButton size="large" type="submit" variant="contained" loading={isSubmitting}>
+              휴대폰 인증
+            </LoadingButton>
+          </Stack>
           <TextField
             fullWidth
             autoComplete="current-password"
